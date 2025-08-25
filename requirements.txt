@@ -1,0 +1,14 @@
+# 延时摄影程序依赖包
+# 安装命令: pip install -r requirements.txt
+
+# 计算机视觉库
+opencv-python>=4.8.0
+
+# 图像处理库
+Pillow>=10.0.0
+
+# GUI库 (通常Python自带，但某些环境可能需要)
+# tkinter 通常是Python标准库的一部分
+
+# 其他可能需要的包
+numpy>=1.24.0

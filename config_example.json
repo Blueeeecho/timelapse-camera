@@ -1,0 +1,23 @@
+{
+    "camera_index": 0,
+    "interval_seconds": 5,
+    "duration_minutes": 60,
+    "resolution": {
+        "width": 1920,
+        "height": 1080
+    },
+    "output_dir": "./timelapse_output",
+    "image_format": "jpg",
+    "image_quality": 95,
+    "filename_prefix": "timelapse",
+    "auto_exposure": true,
+    "brightness": 0,
+    "contrast": 0,
+    "saturation": 0,
+    "create_video": true,
+    "video_fps": 30,
+    "video_format": "mp4",
+    "cleanup_images": false,
+    "preview_window": true,
+    "log_level": "INFO"
+}
