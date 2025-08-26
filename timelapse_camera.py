@@ -3,8 +3,6 @@
 """
 延时摄影拍摄程序
 功能：调用电脑摄像头进行延时摄影拍摄
-作者：Assistant
-日期：2025-01-20
 """
 
 import cv2
@@ -48,7 +46,7 @@ class TimelapseCamera:
         """
         return {
             "camera_index": 0,  # 摄像头索引
-            "interval_seconds": 5,  # 拍摄间隔（秒）
+            "interval_seconds": 2,  # 拍摄间隔（秒）
             "duration_minutes": 60,  # 拍摄时长（分钟）
             "resolution": {
                 "width": 1920,
@@ -144,7 +142,9 @@ class TimelapseCamera:
         Returns:
             str: 输出目录路径
         """
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        # 使用中文日期时间格式
+        now = datetime.now()
+        timestamp = f"{now.year}年{now.month:02d}月{now.day:02d}日{now.hour:02d}：{now.minute:02d}-{now.second:02d}：{now.microsecond//10000:02d}"
         output_dir = os.path.join(self.config["output_dir"], f"{self.config['filename_prefix']}_{timestamp}")
         
         Path(output_dir).mkdir(parents=True, exist_ok=True)

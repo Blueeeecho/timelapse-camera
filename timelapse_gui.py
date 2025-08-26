@@ -41,7 +41,7 @@ class TimelapseGUI:
         # 配置变量
         self.config = {
             "camera_index": tk.IntVar(value=0),
-            "interval_seconds": tk.DoubleVar(value=5.0),
+            "interval_seconds": tk.DoubleVar(value=2.0),
             "duration_minutes": tk.DoubleVar(value=60.0),
             "width": tk.IntVar(value=1920),
             "height": tk.IntVar(value=1080),
@@ -144,9 +144,6 @@ class TimelapseGUI:
         # 存储摄像头原始比例，用于动态调整预览框尺寸
         self.camera_aspect_ratio = 16/9  # 默认16:9，启动后会自动检测实际比例
         
-        # 控制按钮已移至可滚动区域
-        
-        # 控制按钮已移至录制控制面板中
         
         # 创建可滚动的控制区域 - 改进样式（在主容器中）
         scrollable_container = ttk.Frame(main_container)
@@ -893,8 +890,9 @@ class TimelapseGUI:
             recording_camera.set(cv2.CAP_PROP_CONTRAST, self.config["contrast"].get() / 100.0)
             recording_camera.set(cv2.CAP_PROP_SATURATION, self.config["saturation"].get() / 100.0)
             
-            # 创建输出目录
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            # 创建输出目录 - 使用中文日期时间格式
+            now = datetime.now()
+            timestamp = f"{now.year}年{now.month:02d}月{now.day:02d}日{now.hour:02d}：{now.minute:02d}-{now.second:02d}：{now.microsecond//10000:02d}"
             output_dir = os.path.join(self.config["output_dir"].get(), f"{self.config['filename_prefix'].get()}_{timestamp}")
             Path(output_dir).mkdir(parents=True, exist_ok=True)
             
